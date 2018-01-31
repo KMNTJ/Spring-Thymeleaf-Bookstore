@@ -1,0 +1,20 @@
+
+ - - - Bookstore - - -
+
+We will now start to create our training project. This excercise continues through the whole course
+and it will be returned to Github.
+
+First assignment
+
+Done a.) Create a project called Bookstore by using Spring Initializr page (include web, test)
+Done b.) Add a new controller called BookController which can handle a get request to the path /index
+Done c.) Add a new model class called Book which contains attributes: title, author, year, isbn, price
+d.) Add your project to your GitHub account (See the instructions from the moodle)
+
+Follow the recommended Spring Boot project structure 
+
+Second assignment
+
+-Awaiting instructions.
+
+
