@@ -1,9 +1,22 @@
 package fi.haagahelia.spring.Bookstore.Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Book")  // koe, voi aiheuttaa häiriötä, jos pathin muodostus onkin tarkempaa
 public class Book {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long id;
 	public String title;
 	public String author;
+	@Column(name="year")  // koe, voi aiheuttaa häiriötä, jos pathin muodostus onkin tarkempaa
 	public String year;
 	public String isbn;
 	public String price;
@@ -19,7 +32,25 @@ public class Book {
 		this.isbn = isbn;
 		this.price = price;
 	}
+	
+	public Book(Long id, String title, String author, String year, String isbn, String price) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.year = year;
+		this.isbn = isbn;
+		this.price = price;
+	}
+	
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -62,7 +93,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
 				+ "]";
 	}
 	

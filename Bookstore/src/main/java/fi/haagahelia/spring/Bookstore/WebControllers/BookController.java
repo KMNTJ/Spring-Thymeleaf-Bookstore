@@ -1,14 +1,74 @@
 package fi.haagahelia.spring.Bookstore.WebControllers;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fi.haagahelia.spring.Bookstore.Models.Book;
+import fi.haagahelia.spring.Bookstore.Repository.IBookRepository;
+
 @Controller
 public class BookController {
+	
+	@Autowired
+	private IBookRepository iBookRepository;
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String index(){
 		return "index";
 	}
+	
+	@RequestMapping(value="/listbooks", method=RequestMethod.GET)
+	public String listBooks(Model model){
+		model.addAttribute("books", iBookRepository.findAll());
+		return "ListBook";
+	}
+	
+	@RequestMapping(value="/addbook", method=RequestMethod.GET)
+	public String addBook(Model model){
+		Book book = new Book();
+		model.addAttribute(book);
+		return "AddBook";
+	}
+	
+	@RequestMapping(value="/savebook", method=RequestMethod.POST)
+	public String saveBook(Book book){
+		iBookRepository.save(book);
+		return "redirect:listbooks";
+	}
+	
+	@RequestMapping(value="/editbook/{id}", method=RequestMethod.GET)
+	public String editBook(@PathVariable("id") Long bookId, Model model){
+		//Long bookIdLong = Long.parseLong(bookId);
+		model.addAttribute("book", iBookRepository.findOne(bookId));
+		return "EditBook";
+	}
+	
+	@RequestMapping(value="/deletebook/{id}", method=RequestMethod.GET)
+	public String deleteBook(@PathVariable("id") String bookId, Model model){
+		Long bookIdLong = null;
+		try{
+			bookIdLong = Long.parseLong(bookId);
+			iBookRepository.delete(bookIdLong);
+		}
+		catch (Exception e){
+		}
+		return "redirect:../listbooks";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
