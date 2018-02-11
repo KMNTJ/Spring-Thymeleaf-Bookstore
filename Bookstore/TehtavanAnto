@@ -1,0 +1,58 @@
+
+ - - - Bookstore - - -
+
+ We will now start to create our training project. This excercise continues through the whole course
+ and it will be returned to Github.
+
+- - - - - - - - - - - - - - - - - - - - - 
+ - First assignment - Completed 
+
+ Done a.) Create a project called Bookstore by using Spring Initializr page (include web, test)
+ Done b.) Add a new controller called BookController which can handle a get request to the path /index
+ Done c.) Add a new model class called Book which contains attributes: title, author, year, isbn, price
+ Done d.) Add your project to your GitHub account (See the instructions from the moodle)
+
+ Follow the recommended Spring Boot project structure 
+
+
+- - - - - - - - - - - - - - - - - - - - - 
+ - Second assignment - Under progress.
+
+ Use your own bookstore application from the GitHub.
+ Check StudentListREST example from the moodle
+
+
+ 1. Bookstore: REST
+
+ A.) Create REST service that return all books (JSON)
+  DONE a. Create a method to controller
+  DONE b. Ignore one-to-many link from JSON
+ B.) Create REST service that return one book by id (JSON)
+  DONE a. Create a method to controller
+  DONE b. Use path variable to get book id
+ C.) Change REST api path to /api
+  DONE a. Modify your application.properties
+
+ Push all changes to GitHub
+
+
+ 2. Bookstore: Spring Data REST
+ 
+  UNDER PROGRESS
+ 
+ Use your own bookstore application from the GitHub.
+ Enable Spring Data REST by adding dependency to pom.xml
+ Test different RESTful services (searching, adding…)
+
+
+- - - - - - - - - - - - - - - - - - - - -
+ - Third assignment - Waiting for assignment.
+
+
+
+
+
+
+
+
+

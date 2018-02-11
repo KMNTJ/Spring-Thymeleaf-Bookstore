@@ -11,13 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fi.haagahelia.spring.Bookstore.Models.Book;
+import fi.haagahelia.spring.Bookstore.Models.Category;
 import fi.haagahelia.spring.Bookstore.Repository.IBookRepository;
+import fi.haagahelia.spring.Bookstore.Repository.ICategoryRepository;
 
 @Controller
 public class BookController {
 	
 	@Autowired
 	private IBookRepository iBookRepository;
+	
+	@Autowired
+	private ICategoryRepository iCategoryRepository;
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String index(){
@@ -32,8 +37,8 @@ public class BookController {
 	
 	@RequestMapping(value="/addbook", method=RequestMethod.GET)
 	public String addBook(Model model){
-		Book book = new Book();
-		model.addAttribute(book);
+		model.addAttribute("book", new Book());
+		model.addAttribute("categorylist", iCategoryRepository.findAll());
 		return "AddBook";
 	}
 	
@@ -45,8 +50,8 @@ public class BookController {
 	
 	@RequestMapping(value="/editbook/{id}", method=RequestMethod.GET)
 	public String editBook(@PathVariable("id") Long bookId, Model model){
-		//Long bookIdLong = Long.parseLong(bookId);
 		model.addAttribute("book", iBookRepository.findOne(bookId));
+		model.addAttribute("categorylist", iCategoryRepository.findAll());
 		return "EditBook";
 	}
 	

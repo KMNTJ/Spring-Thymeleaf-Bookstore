@@ -8,7 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import fi.haagahelia.spring.Bookstore.Models.Book;
+import fi.haagahelia.spring.Bookstore.Models.Category;
 import fi.haagahelia.spring.Bookstore.Repository.IBookRepository;
+import fi.haagahelia.spring.Bookstore.Repository.ICategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -19,14 +21,18 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookCommandLineRunner(IBookRepository repository) {
+	public CommandLineRunner bookCommandLineRunner(IBookRepository bookRepository, ICategoryRepository categoryRepository) {
 		return (args) -> {
+			log.info("create a couple of categories");
+			categoryRepository.save(new Category("Horror"));
+			categoryRepository.save(new Category("SciFi"));
+			
 			log.info("save a couple of books");
-			repository.save(new Book("A", "B", "C", "D", "E"));
-			repository.save(new Book("AA", "BB", "CC", "DD", "EE"));
+			bookRepository.save(new Book("A", "B", "C", "D", "E", categoryRepository.findByName("Horror").get(0)));
+			bookRepository.save(new Book("AA", "BB", "CC", "DD", "EE", categoryRepository.findByName("SciFi").get(0)));
 			
 			log.info("fetch all books");
-			for (Book book : repository.findAll()) {
+			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());
 			}
 
