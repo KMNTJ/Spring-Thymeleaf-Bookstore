@@ -7,10 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import fi.haagahelia.spring.Bookstore.Models.User;
 import fi.haagahelia.spring.Bookstore.Models.Book;
 import fi.haagahelia.spring.Bookstore.Models.Category;
 import fi.haagahelia.spring.Bookstore.Repository.IBookRepository;
 import fi.haagahelia.spring.Bookstore.Repository.ICategoryRepository;
+import fi.haagahelia.spring.Bookstore.Repository.IUserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,8 +23,13 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookCommandLineRunner(IBookRepository bookRepository, ICategoryRepository categoryRepository) {
+	public CommandLineRunner bookCommandLineRunner(IBookRepository bookRepository, ICategoryRepository categoryRepository, IUserRepository userRepository) {
 		return (args) -> {
+			log.info("create a couple of users");
+			userRepository.save(new User("u", "$2a$04$jpaop0rtM9vB4JlXXR0Rf.laXBiGHyhvYU.97bOqyXH0uXrnn/ogC", "USER"));
+			userRepository.save(new User("a", "$2a$04$L8b76mFZldgRcjiGGqWc0OEeUfXYlnWVZ7EtT1d/d598J2BXFs0X2", "ADMIN"));
+			
+			
 			log.info("create a couple of categories");
 			categoryRepository.save(new Category("Horror"));
 			categoryRepository.save(new Category("SciFi"));
