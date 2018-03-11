@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fi.haagahelia.spring.Bookstore.Models.Book;
@@ -15,8 +14,12 @@ import fi.haagahelia.spring.Bookstore.Repository.IBookRepository;
 @RestController
 public class RestBookController{
 	
+	private final IBookRepository iBookRepository;
+	
 	@Autowired
-	private IBookRepository iBookRepository;
+	public RestBookController(IBookRepository iBookRepository) {
+		this.iBookRepository = iBookRepository;
+	}
 	
 	@RequestMapping(value="api/listbooks", method=RequestMethod.GET)
 	public List<Book> showBookListRest(){

@@ -22,6 +22,14 @@ public class BookstoreApplication {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	
+	/**
+	 * Im some custom text, that I am wishing to find in generated Javadoc
+	 * @Author Tuomas
+	 * @param bookRepository
+	 * @param categoryRepository
+	 * @param userRepository
+	 * @return
+	 */
 	@Bean
 	public CommandLineRunner bookCommandLineRunner(IBookRepository bookRepository, ICategoryRepository categoryRepository, IUserRepository userRepository) {
 		return (args) -> {

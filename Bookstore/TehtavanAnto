@@ -46,7 +46,7 @@
 
 
 - - - - - - - - - - - - - - - - - - - - -
- - Third assignment - Waiting for assignment.
+ - Third assignment - Security.
 
 Use your own bookstore application from the GitHub.
 Check SecureStudentList example from the moodle.
@@ -75,9 +75,20 @@ DONE - d. Add some users to your database and hash the passwords with BCrypt has
 
   Push all changes to GitHub
 
+- - - - - - - - - - - - - - - - - - - - -
+ - Fourth assignment - Testing.
 
+   Check StudentListTest example from the moodle
+   
+1. Bookstore: Testing the web application
+DONE - a. Add Smoke testing to your Bookstore application (for all controllers)
+       b. Add JPA repository tests (for all repositories)
+          *Test create, delete and search functionalities
+2. Bookstore: Bonus - deployment
+   Deploy your Booktore in Heroku
 
+   Push all changes to GitHub
 
-
+   Weekly assingments done. Time to create a compiling project.
 
 

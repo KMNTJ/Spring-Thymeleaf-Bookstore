@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
-
 import fi.haagahelia.spring.Bookstore.Models.Book;
-import fi.haagahelia.spring.Bookstore.Models.Category;
 
 @RestResource
 public interface IBookRepository extends CrudRepository<Book, Long>{
